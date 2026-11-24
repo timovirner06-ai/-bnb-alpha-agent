@@ -1,0 +1,21 @@
+name: MergePay link
+on:
+  workflow_dispatch:
+    inputs:
+      wallet:
+        description: 'Arc wallet to receive bounties'
+        required: true
+        default: '0x...'
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  link:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Link Wallet
+        uses: codewithroh/mergepay-action@main
+        with:
+          wallet: ${{ inputs.wallet }}
