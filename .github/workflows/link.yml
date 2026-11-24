@@ -5,7 +5,6 @@ on:
       wallet:
         description: 'Arc wallet to receive bounties'
         required: true
-        default: '0x...'
 
 permissions:
   id-token: write
@@ -13,9 +12,8 @@ permissions:
 
 jobs:
   link:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Link Wallet
-        uses: codewithroh/mergepay-action@main
-        with:
-          wallet: ${{ inputs.wallet }}
+    uses: codeswithroh/mergepay/.github/workflows/link.yml@v1
+    with:
+      wallet: ${{ inputs.wallet }}
+      contract: "0xcff79B144833b36ca53b310C1Ad7854AF9Ff9EeD"
+      relayer: https://mergepay.codeswithroh.workers.dev
